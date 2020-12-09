@@ -22,8 +22,9 @@
 
 //     return data.location.country.name
 // }
-
-const weather = new Weather('Borås', 'Sweden');
+const storage = new Storage();
+const weatherLocal = storage.getLocationData()
+const weather = new Weather(weatherLocal.city, weatherLocal.country);
 const ui = new UI;
 
 document.addEventListener('DOMContentLoaded', getWeather);
@@ -33,6 +34,8 @@ document.getElementById('w-change-btn'),addEventListener('click', (e) => {
     const country = document.getElementById('country').value;
     
     weather.changeLocation(city, country);
+
+    storage.setLocationData(city, country)
     
     getWeather();
 
