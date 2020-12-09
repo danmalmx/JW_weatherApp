@@ -11,13 +11,12 @@ class UI {
     }
 
     paint(weather) {
-        console.log('weather', weather);
         this.location.textContent = `${weather.name}, ${weather.sys.country}`;
         this.desc.textContent = weather.weather[0].description;
-        this.string.textContent = `${weather.main.temp}˚C`;
+        this.string.textContent = `${weather.main.temp.toFixed(1)}˚C`;
         this.icon.setAttribute('src', `http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`)
         this.humidity.textContent = `Relative humidity: ${weather.main.humidity}%`
-        this.feelsLike.textContent = `Feels like: ${weather.main.feels_like}˚C`
-        this.wind.textContent = `Wind: ${weather.wind.speed} km/h`
+        this.feelsLike.textContent = `Feels like: ${weather.main.feels_like.toFixed(1)}˚C`
+        this.wind.textContent = `Wind: ${weather.wind.speed} m/s`
     }
 }
